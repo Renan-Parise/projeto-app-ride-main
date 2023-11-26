@@ -13,7 +13,6 @@
       }
     ],
     "env": {
-      "FLASK_ENV": "production",
-      "ANOTHER_ENV_VARIABLE": "value"
+      "FLASK_ENV": "production"
     }
   }
