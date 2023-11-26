@@ -1,0 +1,315 @@
+<!doctype html>
+<html class="h-100" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+  <title>Ride - Solicite uma bicicleta</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='theme.css') }}">
+</head>
+
+<body class="bg-black text-white mt-0" data-bs-spy="scroll" data-bs-target="#navScroll">
+  
+  <nav id="navScroll" class="navbar navbar-light bg-light fixed-top px-vw-5" tabindex="0">
+    <div class="container">
+      <a class="navbar-brand pe-md-4 fs-4 col-12 col-md-auto text-center" href="{{ url_for('home') }}">
+        <span class="ms-md-1 mt-1 fw-bolder me-md-5">Ride</span>
+      </a>
+      <ul class="navbar-nav btn-log btn-login mx-auto mb-2 mb-lg-0 list-group list-group-horizontal"></ul>
+      
+      <a href="{{ url_for('login') }}"
+        class="btn btn-light btn-log btn-md">Log-in
+      </a>
+      <a href="{{ url_for('register') }}"
+        class="btn btn-dark btn-md">Cadastre-se
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+            class="bi bi-arrow-right" viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+              d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
+          </svg>
+      </a>
+    </div>
+  </nav>
+
+  <main>
+    <div class="w-100 overflow-hidden position-relative bg-black text-white" data-aos="fade">
+      <div class="position-absolute w-100 h-100 bg-black opacity-75 top-0 start-0"></div>
+      <div class="container py-vh-4 position-relative mt-5 px-vw-5 text-center">
+        <div class="row d-flex align-items-center justify-content-center py-vh-5">
+          <div class="col-12 col-xl-10">
+            <h1 class="display-huge mt-3 mb-3 lh-1">Vá a qualquer lugar com o app da Ride</h1>
+          </div>
+          <div class="col-12 col-xl-8">
+            <p class="lead text-secondary">Solicite uma bicicleta, busque-a e aproveite.</p>
+          </div>
+          <div class="col-12 text-center">
+            <a href="{{ url_for('home') }}" class="btn btn-xl btn-light">Conheça-nos
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="bi bi-arrow-right" viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                  d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="bg-black py-vh-3">
+      <div class="container bg-black px-vw-5 py-vh-3 rounded-5 shadow">
+
+
+        <div class="col-12 col-lg-12">
+          <div class="p-5 pt-0 mt-5" data-aos="fade">
+            <span class="h5 text-secondary fw-lighter"><h4 class="text-center">Descubra a Ride</h4></span>
+            <h2 class="display-5 text-center">Mergulhe em uma experiência única! Aqui estão alguns motivos pelos quais você não pode perder a chance de conhecer-nos.</h2>
+          </div>
+        </div>
+        
+        <div class="row gx-5">
+          <div class="col-12 col-lg-6">
+            <div class="card bg-transparent mb-5 mt-5" data-aos="zoom-in-up">
+              <div class="bg-dark shadow rounded-5 p-0">
+                <img src="{{ url_for('static', filename='images/banner7.jpg') }}" width="1002" height="390" alt="abstract image"
+                  class="img-fluid rounded-5 no-bottom-radius" loading="lazy">
+                <div class="p-5">
+                  <h2 class="fw-lighter">Monitoramento da saúde do usuário</h2>
+                  <p class="pb-4 text-secondary">Vá além do transporte. Oferecemos monitoramento da saúde, incentivando um estilo de vida ativo. Rastreamos calorias queimadas e distâncias percorridas, promovendo não apenas a mobilidade, mas também o bem-estar do usuário.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-lg-6">
+            <div class="card bg-transparent mb-5 mt-5" data-aos="zoom-in-up">
+              <div class="bg-dark shadow rounded-5 p-0">
+                <img src="{{ url_for('static', filename='images/banner3.jpg') }}" width="1002" height="442" alt="abstract image"
+                  class="img-fluid rounded-5 no-bottom-radius" loading="lazy">
+                <div class="p-5">
+                  <h2 class="fw-lighter">Pagamento Seguro</h2>
+                  <p class="pb-4 text-secondary">Priorizamos a sua segurança. Nosso sistema de pagamento seguro garante transações protegidas, proporcionando aos usuários uma experiência de aluguel de bicicletas sem preocupações.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 card-max col-lg-6">
+            <div class="card bg-transparent mb-5 mt-5" data-aos="zoom-in-up">
+              <div class="bg-dark shadow rounded-5 p-0">
+                <img src="{{ url_for('static', filename='images/banner5.jpg') }}" width="1002" height="390" alt="abstract image"
+                  class="img-fluid rounded-5 no-bottom-radius" loading="lazy">
+                <div class="p-5">
+                  <h2 class="fw-lighter">Integração com o transporte público</h2>
+                  <p class="pb-4 text-secondary">Facilitamos deslocamentos urbanos integrados. Nosso aplicativo se harmoniza com o transporte público, permitindo que os usuários combinem bicicletas com ônibus, metrôs e trens para itinerários eficientes.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-lg-6">
+            <div class="card bg-transparent mb-5 mt-5" data-aos="zoom-in-up">
+              <div class="bg-dark shadow rounded-5 p-0">
+                <img src="{{ url_for('static', filename='images/banner6.jpg') }}" width="1002" height="327" alt="abstract image"
+                  class="img-fluid rounded-5 no-bottom-radius" loading="lazy">
+                <div class="p-5">
+                  <h2 class="fw-lighter">Acessibilidade para turistas</h2>
+                  <p class="pb-4 text-secondary">Viajar conosco é fácil e econômico. Nosso aplicativo é amigável para turistas, com instruções multilíngues, opções de pagamento internacional e descontos exclusivos para visitantes temporários.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-lg-6">
+            <div class="card bg-transparent mb-5 mt-5" data-aos="zoom-in-up">
+              <div class="bg-dark shadow rounded-5 p-0">
+                <img src="{{ url_for('static', filename='images/banner1.jpg') }}" width="1002" height="227" alt="abstract image"
+                  class="img-fluid rounded-5 no-bottom-radius" loading="lazy">
+                <div class="p-5">
+                  <h2 class="fw-lighter">Sustentabilidade</h2>
+                  <p class="pb-4 text-secondary">Aqui, os usuários contribuem para a redução das emissões de carbono, tornando a mobilidade urbana mais verde e saudável para todos.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="bg-black">
+      <div class="container">
+        <div class="col-12 col-lg-12">
+          <div class="p-5 pt-0 mb-5 mt-5" data-aos="fade">
+            <span class="h5 text-secondary fw-lighter"><h4 class="text-center">Planos</h4></span>
+            <h2 class="display-5 text-center">Conheça o Premium &ndash; Nossa forma de melhorar sua experiência, que cabe no seu bolso.</h2>
+          </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-lg-4 mb-4">
+                <div class="bg-dark rounded-5 py-vh-3 p-5 text-center" data-aos="zoom-in-up">
+                  <h4 class="display-md mb-2 mt-2">
+                    <span class="border-bottom border-5">Ride Guarantee</span>
+                  </h4>
+                  <h2 class="display-huge mb-5 mt-5">
+                    <span class="fs-4 me-2 fw-light">R$</span><span class="border-bottom border-5">14.90</span><span
+                      class="fs-2 fw-light">/mês</span>
+                  </h2>
+                  <p class="lead text-secondary">
+                    O plano completo para quem precisa de organização, e odeia quando tudo dá errado.
+                    Com o Ride+, você tem acesso a:
+                    <ul>
+                      <li class="text-secondary">Possibilidade de pedir uma bicicleta com até 1 semana de antecedência.</li>
+                      <li class="text-secondary">Taxa com desconto em caso de cancelamento.</li>
+                    </ul>
+                  </p>
+                  <a href="{{ url_for('register') }}" class="btn btn-xl btn-light">Cadastre-se
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                      class="bi bi-arrow-right" viewBox="0 0 16 16">
+                      <path fill-rule="evenodd"
+                        d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
+                    </svg>
+                  </a>
+                </div>
+            </div>
+    
+            <div class="col-12 col-lg-4 mb-4">
+                <div class="bg-dark rounded-5 py-vh-3 p-5 text-center" data-aos="zoom-in-up">
+                  <h4 class="display-md mb-2 mt-2">
+                    <span class="border-bottom border-5">Ride Pro</span>
+                  </h4>
+                  <h2 class="display-huge mb-5 mt-5">
+                    <span class="fs-4 me-2 fw-light">R$</span><span class="border-bottom border-5">39.90</span><span
+                      class="fs-2 fw-light">/mês</span>
+                  </h2>
+                  <p class="lead text-secondary">
+                    O melhor plano para quem quer economizar!
+                    Com o Ride Pro, você tem acesso a:
+                    <ul>
+                      <li class="text-secondary">Todas as vantagens do Ride Guarantee</li>
+                      <li class="text-secondary">Desconto em todas as viagens que você fizer enquanto estiver com o plano ativo.</li>
+                      <li class="text-secondary">Acesso ao programa de recompensas, onde você pode ganhar viagens gratuitas durante todo o mês.</li>   
+                    </ul>
+                  </p>
+                  <a href="{{ url_for('register') }}" class="btn btn-xl btn-light">Cadastre-se
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                      class="bi bi-arrow-right" viewBox="0 0 16 16">
+                      <path fill-rule="evenodd"
+                        d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
+                    </svg>
+                  </a>
+                </div>
+            </div>
+    
+            <div class="col-12 col-lg-4 mb-4">
+                <div class="bg-dark rounded-5 py-vh-3 p-5 text-center" data-aos="zoom-in-up">
+                  <h4 class="display-md mb-2 mt-2">
+                    <span class="border-bottom border-5">Ride Elite</span>
+                  </h4>
+                  <h2 class="display-huge mb-5 mt-5">
+                    <span class="fs-4 me-2 fw-light">R$</span><span class="border-bottom border-5">249.90</span><span
+                      class="fs-2 fw-light">/mês</span>
+                  </h2>
+                  <p class="lead text-secondary">
+                    O plano perfeito para quem adora andar de bicicleta! Com o Ride Elite, você tem acesso a:
+                    <ul>
+                      <li class="text-secondary">Todas as vantagens do Ride Guarantee e do Ride Pro</li>
+                      <li class="text-secondary">Liberdade para andar de bicicleta até 6 horas por dia, sem pagar nenhuma taxa.</li>
+                      <li class="text-secondary">Cancelamento gratuito até 2 vezes por semana.</li>
+                      <li class="text-secondary">Acesso antecipado a novos modelos.</li>
+                      <li class="text-secondary">Plano de seguro melhorado contra danos acidentais e roubo, proporcionando tranquilidade à você.</li>
+                    </ul>
+                  </p>
+                  <a href="{{ url_for('register') }}" class="btn btn-xl btn-light">Cadastre-se
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                      class="bi bi-arrow-right" viewBox="0 0 16 16">
+                      <path fill-rule="evenodd"
+                        d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
+                    </svg>
+                  </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+  </main>
+
+  <footer class="bg-black border-top border-dark">
+    <div class="container py-vh-4 text-secondary fw-lighter">
+      <div class="row">
+        <div class="col-12 col-lg-5 py-4 text-center text-lg-start">
+          <a class="navbar-brand pe-md-4 fs-4 col-12 col-md-auto text-center" href="{{ url_for('home') }}">
+            <span class="ms-md-1 mt-1 fw-bolder me-md-5">Ride</span>
+          </a>
+
+        </div>
+        <div class="col border-end border-dark">
+          <span class="h6">Empresa</span>
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a href="{{ url_for('home') }}" class="link-fancy link-fancy-light">Sobre nós</a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ url_for('home') }}" class="link-fancy link-fancy-light">Informações</a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ url_for('home') }}" class="link-fancy link-fancy-light">Trabalhe na Ride</a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ url_for('home') }}" class="link-fancy link-fancy-light">Contato</a>
+            </li>
+          </ul>
+        </div>
+        <div class="col border-end border-dark">
+          <span class="h6">Services</span>
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a href="{{ url_for('home') }}" class="link-fancy link-fancy-light">Preços</a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ url_for('home') }}" class="link-fancy link-fancy-light">Produtos</a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ url_for('home') }}" class="link-fancy link-fancy-light">Mais</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="container text-center small py-vh-2 border-top border-dark">Feito pelo time
+      <a href="https://renan-parise.github.io/portfolio-rsp/" class="link-fancy link-fancy-light" target="_blank">Ride</a>. Todos os direitos reservados &copy;
+    </div>
+  </footer>
+
+
+
+
+
+
+
+
+  <script src="{{ url_for('static', filename='bootstrap.bundle.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='aos.js') }}"></script>
+  <script>
+    AOS.init({
+      duration: 800, // values from 0 to 3000, with step 50ms
+    });
+  </script>
+  <script>
+    let scrollpos = window.scrollY;
+    const header = document.querySelector(".navbar");
+    const header_height = header.offsetHeight;
+
+    const add_class_on_scroll = () => header.classList.add("scrolled", "shadow-sm");
+    const remove_class_on_scroll = () => header.classList.remove("scrolled", "shadow-sm");
+
+    window.addEventListener('scroll', function () {
+      scrollpos = window.scrollY;
+
+      if (scrollpos >= header_height) { add_class_on_scroll(); }
+      else { remove_class_on_scroll(); }
+
+      console.log(scrollpos);
+    })
+  </script>
+
+</body>
+
+</html>

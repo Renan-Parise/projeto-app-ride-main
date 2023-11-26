@@ -1,0 +1,227 @@
+<!doctype html>
+<html class="h-100" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+  <title>Ride - Solicite uma bicicleta</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='theme.css') }}">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+</head>
+<body class="bg-black text-white mt-0" data-bs-spy="scroll" data-bs-target="#navScroll">
+  <nav id="navScroll" class="navbar navbar-light bg-light fixed-top px-vw-5" tabindex="0">
+    <div class="container">
+      <a class="navbar-brand pe-md-4 fs-4 col-12 col-md-auto text-center" href="{{ url_for('home') }}">
+        <span class="ms-md-1 mt-1 fw-bolder me-md-5">Ride</span>
+      </a>
+      <ul class="navbar-nav btn-log btn-login mx-auto mb-2 mb-lg-0 list-group list-group-horizontal"></ul>
+      
+      <a href="{{ url_for('home') }}"
+        class="btn btn-light btn-log btn-md">
+        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="32" height="32" viewBox="0 0 16 16">
+          <path d="M 8 2 C 6.347656 2 5 3.347656 5 5 C 5 6.652344 6.347656 8 8 8 C 9.652344 8 11 6.652344 11 5 C 11 3.347656 9.652344 2 8 2 Z M 8 8 C 5.246094 8 3 10.246094 3 13 L 4 13 C 4 10.785156 5.785156 9 8 9 C 10.214844 9 12 10.785156 12 13 L 13 13 C 13 10.246094 10.753906 8 8 8 Z M 8 3 C 9.109375 3 10 3.890625 10 5 C 10 6.109375 9.109375 7 8 7 C 6.890625 7 6 6.109375 6 5 C 6 3.890625 6.890625 3 8 3 Z"></path>
+        </svg>
+        {{ username }}
+      </a>
+      <a href="{{ url_for('dashboard') }}"
+        class="btn btn-dark btn-md"
+        style="padding: 10px 32px;"
+        data-tooltip="{{ goodToGo }}"
+        data-tooltip-location="bottom">{{ temperature }} °C &nbsp;&ndash;&nbsp;{{ weather_condition}}&nbsp;&nbsp;
+        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="28" height="28" viewBox="0,0,256,256">
+          <g fill="#ffffff" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g transform="scale(10.66667,10.66667)"><path d="M12,2c-5.511,0 -10,4.489 -10,10c0,5.511 4.489,10 10,10c5.511,0 10,-4.489 10,-10c0,-5.511 -4.489,-10 -10,-10zM12,4c4.43012,0 8,3.56988 8,8c0,4.43012 -3.56988,8 -8,8c-4.43012,0 -8,-3.56988 -8,-8c0,-4.43012 3.56988,-8 8,-8zM11,7v2h2v-2zM11,11v6h2v-6z"></path></g></g>
+        </svg>
+      </a>
+      
+    </div>
+  </nav>
+
+  <div class="w-100 overflow-hidden position-relative bg-black text-white" data-aos="fade">
+  <div class="position-absolute w-100 h-100 bg-black opacity-75 top-0 start-0"></div>
+    <div class="container py-vh-4 position-relative mt-5 px-vw-5 text-left">
+      <div class="row d-flex align-items-center justify-content-center py-vh-5">
+        <div style="margin-top: -60px;" class="col-12 col-xl-7">
+          <h1 class="display-huge mt-3 mb-3 lh-1">Onde você quer ir hoje, {{ username }}?</h1>
+
+          <p class="lead text-secondary">Mostrando opções para <b>Videira, SC</b></p>
+
+          <a href="#target" class="btn btn-xl btn-light" style="width: 50%; border-radius: 10px; margin-top: 30px;">Ver preços
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+              class="bi bi-arrow-right" viewBox="0 0 16 16">
+              <path fill-rule="evenodd"
+                d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
+            </svg>
+          </a>
+        </div>
+
+        <div class="col-12 col-xl-5">
+          <div class="card bg-transparent mb-5" data-aos="zoom-in-up">
+              <img src="{{ url_for('static', filename='images/banner.jpg') }}" width="1002" height="227" alt="abstract image"
+                class="img-fluid rounded-5" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div id="target"></div>
+
+  <main>
+    <div class="container-fluid">
+      <div class="row align-items-center justify-content-center">
+        <div class="col-xl-4">
+          <div class="p-5 pt-0 mt-5" data-aos="fade">
+            <span class="h5 text-secondary fw-lighter"><h4>Solicite uma bicicleta</h4></span>
+            <h2 class="display-6">Selecione ou digite o local de partida, efetue o pagamento e pronto!</h2>
+            <label style="margin-top: 20px;" for="name">Informe o local</label>
+            <input style="width: 75%;" id="name" type="text" placeholder="Informe algum ponto específico...">
+            
+            <div id="suggestions-container">
+              <ul id="suggestions"></ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-8">
+          <div class="card bg-transparent mb-5 mt-5" data-aos="zoom-in-up">
+            <div id="map" style="width: 100%; height: 550px;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="bg-black border-top border-dark">
+    <div class="container py-vh-4 text-secondary fw-lighter">
+      <div class="row">
+        <div class="col-12 col-lg-5 py-4 text-center text-lg-start">
+          <a class="navbar-brand pe-md-4 fs-4 col-12 col-md-auto text-center" href="{{ url_for('home') }}">
+            <span class="ms-md-1 mt-1 fw-bolder me-md-5">Ride</span>
+          </a>
+
+        </div>
+        <div class="col border-end border-dark">
+          <span class="h6">Empresa</span>
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a href="{{ url_for('home') }}" class="link-fancy link-fancy-light">Sobre nós</a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ url_for('home') }}" class="link-fancy link-fancy-light">Informações</a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ url_for('home') }}" class="link-fancy link-fancy-light">Trabalhe na Ride</a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ url_for('home') }}" class="link-fancy link-fancy-light">Contato</a>
+            </li>
+          </ul>
+        </div>
+        <div class="col border-end border-dark">
+          <span class="h6">Services</span>
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a href="{{ url_for('home') }}" class="link-fancy link-fancy-light">Preços</a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ url_for('home') }}" class="link-fancy link-fancy-light">Produtos</a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ url_for('home') }}" class="link-fancy link-fancy-light">Mais</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="container text-center small py-vh-2 border-top border-dark">Feito pelo time
+      <a href="https://renan-parise.github.io/portfolio-rsp/" class="link-fancy link-fancy-light" target="_blank">Ride</a>. Todos os direitos reservados &copy;
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script src="{{ url_for('static', filename='bootstrap.bundle.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='aos.js') }}"></script>
+  <script>
+    var map = L.map('map').setView([-27, -51], 11);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+
+    var markers = [
+      { name: 'IFC Videira', coordinates: [-27.026139, -51.145275], url: '/ifc-videira' },
+      { name: 'Subway', coordinates: [-27.004913, -51.154572], url: '/subway' },
+      { name: 'Unoesc', coordinates: [-26.991660, -51.176387], url: '/unoesc' },
+      { name: 'Hospital Divino Salvador', coordinates: [-27.004172, -51.149229], url: '/hospital-divino-salvador' },
+      { name: 'Aeroporto', coordinates: [-27.000103, -51.145149], url: '/aeroporto' },
+      { name: 'Panvel', coordinates: [-27.005727459260758, -51.14956672687654], url: '/panvel' },
+      { name: 'Santtaluz', coordinates: [-27.009337556480116, -51.14985707876895], url: '/santtaluz' },
+      { name: 'Via Atacadista', coordinates: [-26.99830127666355, -51.116901746254165], url: '/via-atacadista' },
+      { name: 'Havan', coordinates: [-27.00006362437415, -51.12107054076484], url: '/havan' },
+      { name: 'Prefeitura de Videira', coordinates: [-27.010851129598386, -51.14597803719221], url: '/prefeitura-de-videira' },
+      { name: 'Viza Atacadista', coordinates: [-26.989557185251744, -51.18017934509038], url: '/viza-atacadista' },
+      { name: 'BRF', coordinates: [-26.99577512729904, -51.168663671314775], url: '/brf' }
+    ];
+
+    markers.forEach(function (markerInfo) {
+      var newMarker = L.marker(markerInfo.coordinates).addTo(map);
+
+      newMarker.on('click', function () {
+        window.location.href = markerInfo.url;
+      });
+    });
+
+    AOS.init({
+      duration: 800,
+    });
+
+    let scrollpos = window.scrollY;
+    const header = document.querySelector(".navbar");
+    const header_height = header.offsetHeight;
+
+    const add_class_on_scroll = () => header.classList.add("scrolled", "shadow-sm");
+    const remove_class_on_scroll = () => header.classList.remove("scrolled", "shadow-sm");
+
+    window.addEventListener('scroll', function () {
+      scrollpos = window.scrollY;
+
+      if (scrollpos >= header_height) { add_class_on_scroll(); }
+      else { remove_class_on_scroll(); }
+
+      console.log(scrollpos);
+    })
+
+    var suggestionsList = document.getElementById('suggestions');
+    var suggestionsContainer = document.getElementById('suggestions-container');
+
+    document.getElementById('name').addEventListener('input', function(event) {
+      var inputValue = event.target.value.toLowerCase();
+
+      // Filter markers based on the input value
+      var matchingMarkers = markers.filter(function(marker) {
+        return marker.name.toLowerCase().includes(inputValue);
+      });
+
+      // Update the suggestions list
+      updateSuggestions(matchingMarkers);
+    });
+
+    function updateSuggestions(matchingMarkers) {
+      // Clear previous suggestions
+      suggestionsList.innerHTML = '';
+
+      // Add new suggestions to the list
+      matchingMarkers.forEach(function(marker) {
+        var listItem = document.createElement('li');
+        listItem.textContent = marker.name;
+        listItem.addEventListener('click', function() {
+          // Redirect to the selected suggestion's URL
+          window.location.href = marker.url;
+        });
+        suggestionsList.appendChild(listItem);
+      });
+
+      // Show or hide the suggestions container based on whether there are suggestions
+      suggestionsContainer.style.display = matchingMarkers.length > 0 ? 'block' : 'none';
+    }
+  </script>
+
+</body>
+
+</html>
